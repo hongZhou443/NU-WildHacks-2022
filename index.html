@@ -16,12 +16,9 @@
   />
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <!-- Javascript only -->
-  <script src="myjs.js"></script>
   <title>Homepage</title>
 </head>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
 <body>
 <header>
   <div class="collapse bg-dark" id="navbarHeader">
@@ -62,41 +59,47 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Reading Buddy</h1>
         <p class="lead text-muted">Help to run the boring terms and conditions into a more friendly, fun, and engaging way!</p>
+
+
         <div class="d-flex justify-content-center">
-          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">File</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Text</button>
-          </li>
-        </ul>
-      </div>
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="mb-3">
-              <label for="formFile" class="form-label">Please input your file</label>
-              <input class="form-control" type="file" id="formFile">
+          <ul class="nav nav-pills" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">File</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="text-tab" data-bs-toggle="tab" data-bs-target="#text" type="button" role="tab" aria-controls="text" aria-selected="false">Text</button>
+            </li>
+          </ul>
+        </div>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="mb-3">
+                <label for="formFile" class="form-label">Please input your file</label>
+                <input class="form-control" type="file" id="formFile">
+              </div>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="button">Submit</button>
+              </div>
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <button class="btn btn-primary" type="button">Submit</button>
-            </div>
-          </div>
-          </div>
-          <div class="tab-pane fade" id="pills-text" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Please enter your text here</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <button class="btn btn-primary" type="button">Submit</button>
+            <div class="tab-pane" id="text" role="tabpanel" aria-labelledby="text-tab">
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Please enter your text here</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="button">Submit</button>
+              </div>
             </div>
           </div>
         </div>
-        </p>
       </div>
-    </div>
   </section>
 </main>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script>
+  var triggerEl = document.querySelector('#nav-pills a[href="#text"]')
+  bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+</script>
 </body>
