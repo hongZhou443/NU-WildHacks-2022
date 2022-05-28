@@ -1,18 +1,21 @@
 import PyPDF2
+# pip install PyPDF2     --> Is needed for the import above
+
 
 def total_string():
-    pdfFileObj = open('INPUTPDF.pdf', 'rb') 
-     
-    pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
-     
+    pdfFileObj = open('INPUTPDF.pdf', 'rb')
+
+    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+
     i = 0
     str1 = ""
-    while i <pdfReader.numPages:
-        pageObj = pdfReader.getPage(i)  
-        str1 = str1+ pageObj.extractText() + " "
+    while i < pdfReader.numPages:
+        pageObj = pdfReader.getPage(i)
+        str1 = str1 + pageObj.extractText() + " "
         i = i+1
-    
-    pdfFileObj.close() 
+
+    pdfFileObj.close()
     return str1
+
 
 total_string()
