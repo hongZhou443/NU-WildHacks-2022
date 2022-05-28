@@ -1,5 +1,9 @@
+import PyPDF2
+# pip install PyPDF2     --> Is needed for the import above
+
+
 def search_for_keyword(s_arr, keyword):
-    res = {keyword : []}
+    res = {keyword: []}
     for i in range(len(s_arr)):
         s = s_arr[i]
         if keyword.lower() in s.lower():
@@ -12,6 +16,7 @@ def search_for_keyword(s_arr, keyword):
             res.get(keyword).append(s+'.')
 
     return res
+
 
 def parse_string(file, keywords):
 
@@ -33,3 +38,19 @@ def parse_string(file, keywords):
         res += '\n\n\n'
 
     return res
+
+
+def total_string():
+    pdfFileObj = open('INPUTPDF.pdf', 'rb')
+
+    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+
+    i = 0
+    str1 = ""
+    while i < pdfReader.numPages:
+        pageObj = pdfReader.getPage(i)
+        str1 = str1 + pageObj.extractText() + " "
+        i = i+1
+
+    pdfFileObj.close()
+    return str1
