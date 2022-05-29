@@ -10,6 +10,7 @@
  parse_string(total_string(fileName),keyword_arr);
 
 function search_for_keyword(s_arr, keyword){
+<<<<<<< HEAD
     var res = [];
 
     var keyword = keyword.toLowerCase();
@@ -17,6 +18,12 @@ function search_for_keyword(s_arr, keyword){
         var curr = s_arr[i].toLowerCase();
         if(curr.includes(keyword)){
             var s = s_arr[i] + ". ";
+=======
+    var res = {keyword: []};
+    for (var i = 0; i < s_arr.length; i++){
+        if(s_arr[i].toLowerCase().includes(keyword.toLowerCase)){
+            var s = s_arr[i];
+>>>>>>> 7487269e9a68f88a50245f7f1154914f9d001891
             if(i > 0){
                 s = s_arr[i-1] + ". " + s;
             }
@@ -35,6 +42,7 @@ function search_for_keyword(s_arr, keyword){
 
 function parse_string(tot_string, keywords){
     var s_arr = tot_string.split('.');
+<<<<<<< HEAD
     var res = "";
 
     for(var i = 0; i < keywords.length; i ++){
@@ -45,6 +53,23 @@ function parse_string(tot_string, keywords){
 
         for(var j = 0; j < keysearch.length; j ++){
             res = res + keysearch[j] + '<br>';
+=======
+    var f = {};
+
+    for(var keyword in keywords){
+        var key_search = search_for_keyword(s_arr, keyword);
+        f.push(key_search);
+    }
+
+    var res = "";
+  
+    for(var key in Object.keys(f)){
+        res += key + ': \n\n';
+
+        var keysearch = f.get(key);
+        for(var section in keysearch){
+            res += section + '\n';
+>>>>>>> 7487269e9a68f88a50245f7f1154914f9d001891
         }
 
         res = res +'<br><br><br>';
