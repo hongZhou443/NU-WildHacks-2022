@@ -17,17 +17,12 @@
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
- $(document).ready(function(){
-        $('input[type="file"]').change(function(e){
-            var fileName = e.target.files[0].name;
-            alert('The file "' + fileName +  '" has been selected.');
-        });
-    });
-
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.entry.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.worker.min.js"></script>
+  <script type="text/javascript" src="function.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <title>Homepage</title>
 </head>
 
@@ -89,25 +84,35 @@
               <div class="mb-3">
                 <form>
                   <label for="formFile" class="form-label">Please input your file</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile" name="filename" onchange="ExtractText()" accept="application/pdf">
                 </form>
               </div>
               <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="button">Submit</button>
+                <button class="btn btn-primary" type="button" id="file-submit">Submit</button>
               </div>
             </div>
-            <div class="tab-pane" id="text" role="tabpanel" aria-labelledby="text-tab">
+            <div onclick="toggleText()" class="tab-pane" id="text" role="tabpanel" aria-labelledby="text-tab">
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Please enter your text here</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="user-text" rows="3"></textarea>
               </div>
               <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="button">Submit</button>
+                <button onClick="myFunction()" class="btn btn-primary" type="button" id="text-submit">Submit</button>
               </div>
             </div>
           </div>
         </div>
       </div>
   </section>
+  <div class="py-5 bg-light">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title" style="text-align: center;">This is the result of your text.</h4><br>
+          <p class="card-text" id="demo"></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 </body>
