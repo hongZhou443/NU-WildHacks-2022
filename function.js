@@ -23,13 +23,13 @@ function parse_string(tot_string, keywords){
     var f = {};
 
     for(var keyword in keywords){
-        var key_search = parse_string(s_arr, keyword);
+        var key_search = search_for_keyword(s_arr, keyword);
         f.push(key_search);
     }
 
     var res = "";
   
-    for(var key in f){
+    for(var key in Object.keys(f)){
         res += key + ': \n\n';
 
         var keysearch = f.get(key);
