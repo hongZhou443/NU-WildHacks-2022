@@ -33,7 +33,7 @@
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4 class="text-white">About</h4>
-          <p class="text-white">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          <p class="text-white">The Reading Buddy is a user-friendly tool to scan through long, boring, and monotonous documents such as Terms and Conditions. Simply upload a PDF file or insert the text, and Reading Buddy will read it for you. Watch out for common keywords and language in Terms and Conditions like you never could before!</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Contact</h4>
@@ -78,6 +78,7 @@
             </li>
           </ul>
         </div>
+        <br>
           <!-- Tab panes -->
           <div class="tab-content">
             <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -87,8 +88,13 @@
                 <input class="form-control" type="file" id="formFile" name="filename" onchange="ExtractText()" accept="application/pdf">
                 </form>
               </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Keywords</label>
+                <textarea class="form-control" id="keywords-pdf" rows="3">Material breach, Material term, Mercantile agent, Pro-rata, Pro-rated, Sole discretion, Intervening event, End User License Agreement, EULA, Non-exclusive, Royalty-free, Transferable, Sub-licensable, Worldwide license, Privacy Policy, Customer Data, Automatic Renewal, Exclusion of liability, Consumer rights, Lease, Tenure, Lump sum, Fees, Non-refundable
+                </textarea>
+              </div>
               <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="button" id="file-submit">Submit</button>
+                <button class="btn btn-primary" type="button" id="file-submit">Search</button>
               </div>
             </div>
             <div onclick="toggleText()" class="tab-pane" id="text" role="tabpanel" aria-labelledby="text-tab">
@@ -96,19 +102,24 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Please enter your text here</label>
                 <textarea class="form-control" id="user-text" rows="3"></textarea>
               </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Keywords</label>
+                <textarea class="form-control" id="keywords-text" rows="3">Material breach, Material term, Mercantile agent, Pro-rata, Pro-rated, Sole discretion, Intervening event, End User License Agreement, EULA, Non-exclusive, Royalty-free, Transferable, Sub-licensable, Worldwide license, Privacy Policy, Customer Data, Automatic Renewal, Exclusion of liability, Consumer rights, Lease, Tenure, Lump sum, Fees, Non-refundable
+                </textarea>
+              </div>
               <div class="d-grid gap-2 col-6 mx-auto">
-                <button onClick="myFunction()" class="btn btn-primary" type="button" id="text-submit">Submit</button>
+                <button onClick="myFunction()" class="btn btn-primary" type="button" id="text-submit">Search</button>
               </div>
             </div>
           </div>
-        </div>
       </div>
+    </div>
   </section>
   <div class="py-5 bg-light">
     <div class="container">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title" style="text-align: center;">This is the result of your text.</h4><br>
+          <h4 class="card-title" style="text-align: center;">Results for each Keyword</h4><br>
           <p class="card-text" id="demo"></p>
         </div>
       </div>

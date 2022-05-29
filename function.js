@@ -35,20 +35,25 @@ function search_for_keyword(s_arr, keyword){
 }
 
 function parse_string(tot_string, keywords){
-    var s_arr = tot_string.split('.');
+    keywords = keywords.split(',');
+
+    var s_arr = tot_string.split('.').filter((s) => {
+        return s.trim() != "";
+    });
     var res = "";
 
     for(var i = 0; i < keywords.length; i ++){
         var keyword = keywords[i];
         var keysearch = search_for_keyword(s_arr, keyword);
-        
-        res = res + keyword + ': <br><br>';
+        if(keysearch.length != 0){
+            res = res + '<b>' + keyword + '</b>' + ': <br><br>';
 
-        for(var j = 0; j < keysearch.length; j ++){
-            res = res + keysearch[j] + '<br>';
+            for(var j = 0; j < keysearch.length; j ++){
+                res = res + keysearch[j] + '<br>';
+            }
+
+            res = res +'<br><br><br>';
         }
-
-        res = res +'<br><br><br>';
     }
 
     console.log(res);
@@ -58,7 +63,8 @@ function parse_string(tot_string, keywords){
 
 
 function myFunction() {
-  const keyword_arr = ["material breach", "material term", "Mercantile agent", "pro-rata", "pro-rated", "sole discretion", "Intervening event", "End User License Agreement", "EULA", "Non-exclusive", "royalty-free", "transferable", "sub-licensable", "worldwide license", "Privacy Policy", "Customer Data", "Automatic Renewal", "Exclusion of liability", "consumer rights", "lease", "tenure", "lump sum", "fees", "non-refundable"];
+  //const keyword_arr = ["material breach", "material term", "Mercantile agent", "pro-rata", "pro-rated", "sole discretion", "Intervening event", "End User License Agreement", "EULA", "Non-exclusive", "royalty-free", "transferable", "sub-licensable", "worldwide license", "Privacy Policy", "Customer Data", "Automatic Renewal", "Exclusion of liability", "consumer rights", "lease", "tenure", "lump sum", "fees", "non-refundable"];
+  var keyword_arr = document.getElementById("keywords-text").value
   var getUserText = document.getElementById("user-text").value;
   var result = parse_string(getUserText, keyword_arr);
   document.getElementById("demo").innerHTML = result;
@@ -68,7 +74,7 @@ var datass = '';
 var DataArr = [];
 PDFJS.workerSrc = '';
 
- function ExtractText() {
+function ExtractText() {
     var input = document.getElementById("formFile");
     var fReader = new FileReader();
     fReader.readAsDataURL(input.files[0]);
@@ -91,6 +97,6 @@ function convertDataURIToBinary(dataURI) {
     for (var i = 0; i < rawLength; i++) {
         array[i] = raw.charCodeAt(i);
     }
-        pdfAsArray(array)
+    pdfAsArray(array)
 
 }
